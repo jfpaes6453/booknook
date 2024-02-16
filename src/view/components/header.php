@@ -10,22 +10,16 @@
 
 </head>
 <body>
-    <header class="bg-white text-black py-4 px-6 flex justify-between items-center border-b-4 border-indigo-500">
+    <header class="bg-blue-200 text-white py-4 px-6 flex justify-between items-center">
         <div class="flex items-center space-x-4">
             <a href="/ruta/a/tu/pagina">
-                <img src="/ruta/a/tu/logo.png" alt="Logo">
+                <img src="../../../assets/images/logo_1.png" alt="Logo" class= "w-[2rem] h-[2rem] ">
             </a>
-            <span>HOME</span>
-            <span>ADMIN/DESKTOP</span>
-        </div>
-        <div>
-            <h1 class="text-lg font-bold">Online BookNook</h1>
         </div>
         <div class="flex items-center space-x-4">
-            <span></span>
-            <span>INSUJPT</span>
-            <span>LOREM</span>
-            <span class="icon-person"></span>
+        <span className="text-center text-zinc-800 text-[26px] font-semibold font-['Nunito Sans']">HOME</span>
+            <span>LOGIN</span>
+            <img src="/assets/images/icon-user.png" alt="User Icon">
         </div>
     </header>
 </body>

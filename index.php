@@ -1,10 +1,5 @@
-<?php
-require_once './config/Database.php';
+<?php require_once("src/view/components/header.php") ?>
 
-use BookNook\Database;
-
-$db = new Database();
-$connection = $db->getConnection();
 
 ?>
 
