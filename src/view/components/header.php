@@ -9,20 +9,22 @@
     <title>Online BookNook</title>
 
 </head>
+
 <body>
     <header class="bg-blue-200 text-white py-4 px-6 flex justify-between items-center">
         <div class="flex items-center space-x-4">
             <a href="/ruta/a/tu/pagina">
-                <img src="../../../assets/images/logo_1.png" alt="Logo" class= "w-[2rem] h-[2rem] ">
+                <img src="http://localhost/booknook/src/resources/img/logo_1.png" alt="Logo" class="w-5rem] h-[2rem]">
             </a>
         </div>
         <div class="flex items-center space-x-4">
-        <span className="text-center text-zinc-800 text-[26px] font-semibold font-['Nunito Sans']">HOME</span>
+            <span className="text-center text-zinc-800 text-[26px] font-semibold font-['Nunito Sans']">HOME</span>
             <span>LOGIN</span>
             <img src="/assets/images/icon-user.png" alt="User Icon">
         </div>
     </header>
 </body>
+
 </html>
 
 <body>
