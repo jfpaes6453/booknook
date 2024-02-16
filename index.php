@@ -1,13 +1,20 @@
 <?php
-require_once './config/Database.php';
 
-use BookNook\Database;
+require_once 'vendor/autoload.php';
 
-$db = new Database();
-$connection = $db->getConnection();
+use Config\Database;
 
+$database = new Database();
+
+$connection = $database->connection();
+
+if ($connection instanceof PDO) {
+    echo "Connect.";
+    
+} else {
+    echo "Error: " . $connection;
+}
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
