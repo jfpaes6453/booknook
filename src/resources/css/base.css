@@ -3,6 +3,14 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --color-gray: #838383;
+    --color-black: #000000;
+    --color-yellow-primary: #E9A003;
+    --color-yellow-secundary: #F4C494;
+    --color-yellow-tertiary: #F4C494;
+
+}
 
 * {
     padding: 0;
