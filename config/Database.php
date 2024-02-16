@@ -1,51 +1,38 @@
 <?php
 
-namespace BookNook;
+namespace Config;
 
 use PDO;
 use PDOException;
-use Exception;
+use Dotenv\Dotenv;
 
 class Database
 {
-    private $pdo;
-    private $isConnected = false;
+    private $host;
+    private $dbname;
+    private $user;
+    private $password;
 
-    private function connect()
+    public function __construct()
     {
-        if ($this->isConnected) {
-            return;
-        }
+        $dotenv = Dotenv::createImmutable(__DIR__ . '/../');
+        $dotenv->load();
 
-        $dotenv = parse_ini_file(__DIR__ . '/../.env');
-
-        $dsn = sprintf(
-            "mysql:host=%s;dbname=%s;charset=utf8mb4",
-            $dotenv['DB_HOST'] ?? 'localhost',
-            $dotenv['DB_NAME'] ?? ''
-        );
-
-        try {
-            $this->pdo = new PDO(
-                $dsn,
-                $dotenv['DB_USER'] ?? '',
-                $dotenv['DB_PASSWORD'] ?? '',
-                [
-                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-                    PDO::ATTR_EMULATE_PREPARES => false,
-                ]
-            );
-            $this->isConnected = true;
-        } catch (PDOException $e) {
-            error_log($e->getMessage());
-            throw new Exception("Unable to connect to the booknook database.");
-        }
+        $this->host = $_ENV['DB_HOST'];
+        $this->dbname = $_ENV['DB_NAME'];
+        $this->user = $_ENV['DB_USER'];
+        $this->password = $_ENV['DB_PASSWORD'];
     }
 
-    public function getConnection()
+    public function connection()
     {
-        $this->connect();
-        return $this->pdo;
+        try {
+            $dsn = "mysql:host={$this->host};dbname={$this->dbname}";
+            $pdo = new PDO($dsn, $this->user, $this->password);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            return $pdo;
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
     }
 }
