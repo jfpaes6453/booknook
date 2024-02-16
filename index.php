@@ -1,9 +1,6 @@
 <?php require_once("src/view/components/header.php") ?>
 
 
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +13,7 @@
 </head>
 
 <body>
-    <h1 class="bg-black">hola</h1>
+    <h1></h1>
 
 </body>
 
