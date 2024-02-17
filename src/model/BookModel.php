@@ -54,7 +54,7 @@ class BookModel
         SELECT books.*, authors.*
         FROM booknook.books AS books
         INNER JOIN booknook.authors AS authors ON books.author_id = authors.id
-        WHERE books.title LIKE :search OR authors.name LIKE :search
+        WHERE LOWER(books.title) LIKE LOWER(:search) OR LOWER(authors.name) LIKE LOWER(:search)
         ");
         $statement->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
         return ($statement->execute()) ? $statement->fetchAll() : false;

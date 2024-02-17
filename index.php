@@ -5,31 +5,44 @@ use Controller\BookController;
 require_once __DIR__ . '/vendor/autoload.php';
 require_once("src/view/components/header.php");
 require_once("c://xampp/htdocs/booknook/src/controller/BookController.php");
+
 $data = new BookController;
 $booksData = $data->getBooksAndAuthors();
+$bookSearch = null;
+
+if (isset($_GET["search"])) {
+    $bookSearch = $data->searchBookAndAuthors($_GET["search"]);
+}
 ?>
 <section class="bg-[url('./src/resources/img/banner-2.svg')] bg-no-repeat bg-bottom bg-cover w-full h-[25rem] flex items-center">
     <div class="text-center basis-[70%]">
         <h1 class="font-['Nunito Sans'] text-[3rem] font-bold leading-[3rem]">Welcome to Booknook.</h1>
-        <p class="font-['Nunito Sans'] text-[1.8rem] font-bold">your ultimate virtual library haven.</p>
+        <p class="font-['Nunito Sans'] text-[1.5rem] font-bold">your ultimate virtual library haven.</p>
     </div>
     <div class="basis-[30%]"></div>
 </section>
 <section class="bg-[#838383] w-full">
     <label for="search"></label>
-    <div class="w-full  h-[6rem]  flex justify-center items-center relative">
+    <form method="GET" action="index.php" class="w-full  h-[6rem]  flex justify-center items-center relative">
         <img src="http://localhost/booknook/src/resources/img/icon-search.svg" alt="icon search" class="h-[1.5rem] absolute left-[36%]">
         <input type="text" id="search" name="search" placeholder="Search for a book..." class="w-[30%] h-[3rem]  text-[1.2rem] pl-[3rem] focus:outline-none">
-    </div>
+    </form>
 
 </section>
-<?php if ($booksData) : ?>
-    <section class="flex flex-col items-center py-[6rem] px-24">
-        <div class="flex flex-col items-center mb-[3rem]">
-            <h2 class="font-['Nunito Sans'] text-[1.5rem] font-bold">ALL BOOKS</h2>
-            <span class="pt-[0.5rem] border-b-4 border-[#FF621E] w-[05rem] block"></span>
-        </div>
-        <div class="flex gap-[3rem] flex-wrap justify-center" id="searchResults">
+<?php if ($bookSearch !== false && $bookSearch !== null) : ?>
+    <section class="flex flex-col items-center py-[4rem] px-24">
+        <?php foreach ($bookSearch as $bookData) : ?>
+            <?php print_r($bookData) ?>
+        <?php endforeach; ?>
+    </section>
+<?php endif; ?>
+<section class="flex flex-col items-center py-[4rem] px-24">
+    <div class="flex flex-col items-center mb-[3rem]">
+        <h2 class="font-['Nunito Sans'] text-[1.5rem] font-bold">ALL BOOKS</h2>
+        <span class="pt-[0.5rem] border-b-4 border-[#FF621E] w-[05rem] block"></span>
+    </div>
+    <div class="flex gap-[3rem] flex-wrap justify-center" id="result-books">
+        <?php if ($booksData !== false && $bookSearch == null) : ?>
             <?php foreach ($booksData as $bookData) : ?>
                 <div class="basis-[22%]">
                     <picture>
@@ -49,10 +62,10 @@ $booksData = $data->getBooksAndAuthors();
                     </div>
                 </div>
             <?php endforeach; ?>
-        </div>
-    <?php else : ?>
-        <h3 class="text-center txt-books text-warning p-4">There is not books</h3>
-    </section>
+    </div>
+<?php else : ?>
+    <h3 class="text-center txt-books text-warning p-4">There is not books</h3>
+</section>
 <?php endif; ?>
 </body>
 
