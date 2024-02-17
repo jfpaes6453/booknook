@@ -24,4 +24,8 @@ class BookController
     {
         return ($this->model->showBooksAndAuthors($id) != false ? $this->model->showBooksAndAuthors($id) : header("local:index:php"));
     }
+    public function searchBookAndAuthors($search)
+    {
+        return ($this->model->searchBookAndAuthors($search)) ? $this->model->searchBookAndAuthors($search) : false;
+    }
 }

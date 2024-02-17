@@ -26,6 +26,7 @@ class BookModel
     ");
         return ($statement->execute()) ? $statement->fetchAll() : false;
     }
+
     public function showBooksAndAuthors($id)
     {
         try {
@@ -45,5 +46,17 @@ class BookModel
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
+    }
+
+    public function searchBookAndAuthors($search)
+    {
+        $statement = $this->pdo->prepare("
+        SELECT books.*, authors.*
+        FROM booknook.books AS books
+        INNER JOIN booknook.authors AS authors ON books.author_id = authors.id
+        WHERE books.title LIKE :search OR authors.name LIKE :search
+        ");
+        $statement->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
+        return ($statement->execute()) ? $statement->fetchAll() : false;
     }
 }
