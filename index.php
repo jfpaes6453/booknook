@@ -16,5 +16,5 @@
     <h1></h1>
 
 </body>
-
+<?php require_once("src/view/components/footer.php") ?>
 </html>
