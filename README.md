@@ -1,8 +1,14 @@
 # BookNook 
 
+# 📚 Library
+
 This project is a web application for our neighborhood library. The application allows the library administrator to add books, update them, and delete them.
 
-## Technologies
+## 🎯 Objectives
+
+The library in our neighborhood wants to modernize and needs to have all its books organized in a web program. Having an updated inventory will facilitate management, to be able to provide better services. The library administrator needs to add books, update them, and be able to delete them. She also wants them to be displayed on the first page.
+
+## 🛠️ Technologies
 
 - HTML
 - CSS
@@ -11,37 +17,41 @@ This project is a web application for our neighborhood library. The application 
 - MySQL
 - Tailwind CSS
 
-## Tools
+## 🧰 Tools
 
 - Figma
 - Visual Studio Code
 - Trello
 - Git / GitHub
 
-## Project Setup
+## 🚀 Project Setup
 
 1. Clone the repository:
     ```bash
-    git clone <https://github.com/jfpaes6453/booknook.git>
+    git clone <repository-url>
     ```
 2. Navigate to the project directory:
     ```bash
-    cd <booknook>
+    cd <project-directory>
     ```
 3. Install the dependencies:
     ```bash
     composer install
     ```
 4. Start the server:
-    If you’re using XAMPP:
-    
-# Open the XAMPP application
-# In the control panel, click the "Start" button next to "Apache" to start the server.
-    If you’re using MAMP:
-# Open the MAMP application
-# Click the "Start Servers" button.
 
-## Folder Structure
+   **If you're using XAMPP:**
+   
+   ```bash
+   # Open the XAMPP application
+   # In the control panel, click the "Start" button next to "Apache" to start the server.
+   ```
+   **If you're using XAMPP:**  
+   ```bash
+   # Open the MAMP application
+   # Click the "Start Servers" button.
+   ```
+   # 📁 Folder Structure
 
 - `src/`: This directory contains all the source code for the application.
     - `controllers/`: This directory contains all the controller classes.
@@ -51,9 +61,11 @@ This project is a web application for our neighborhood library. The application 
 - `public/`: This directory contains all the public files like CSS, JavaScript, and images.
 - `vendor/`: This directory contains all the third-party dependencies.
 
-## Screenshots
+# 📸 Screenshots
 
 Here are some screenshots of the application:
 
-1. Figma Design: !Figma Design
-2. Database Design: !Database Design
+- Figma Design: !Figma Design
+- Database Design: !Database Design
+
+
