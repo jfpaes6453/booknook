@@ -17,20 +17,24 @@ class BookModel
         $this->pdo = $connection->connection();
     }
 
-    public function getBooksAndAuthors()
+    public function getBooksAndAuthors($currentPage, $itemsPerPage)
     {
+        $offset = ($currentPage - 1) * $itemsPerPage;
         $statement = $this->pdo->prepare("
         SELECT books.*, authors.*
         FROM booknook.books
         INNER JOIN booknook.authors ON books.author_id = authors.id
+        LIMIT :offset, :itemsPerPage
     ");
+        $statement->bindValue(':offset', $offset, PDO::PARAM_INT);
+        $statement->bindValue(':itemsPerPage', $itemsPerPage, PDO::PARAM_INT);
         return ($statement->execute()) ? $statement->fetchAll() : false;
     }
 
-    public function showBooksAndAuthors($id)
+    public function showBooksAndAuthors($id, $currentPage, $itemsPerPage)
     {
         try {
-            $bookAndAuthors = $this->getBooksAndAuthors();
+            $bookAndAuthors = $this->getBooksAndAuthors($currentPage, $itemsPerPage);
             $query = "SELECT *
                 FROM booknook.books
                 WHERE id = :id
@@ -58,5 +62,12 @@ class BookModel
         ");
         $statement->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
         return ($statement->execute()) ? $statement->fetchAll() : false;
+    }
+    public function getTotalBooks()
+    {
+        $statement = $this->pdo->prepare("SELECT COUNT(*) as total FROM books");
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        return $result['total'];
     }
 }

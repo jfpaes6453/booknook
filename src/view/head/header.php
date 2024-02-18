@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="http://localhost/booknook/src/resources/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://localhost/booknook/src/resources/css/base.css">
 </head>
 
 <body class="container-fluid p-0 ct-body">

@@ -2,8 +2,6 @@
 
 namespace Controller;
 
-
-
 use Model\BookModel;
 
 class BookController
@@ -14,18 +12,22 @@ class BookController
     {
         require_once("c://xampp/htdocs/booknook/src/model/BookModel.php");
         // require_once("src\model\BookModel.php");
-        $this->model = new BookModel();
+        $this->model = new BookModel;
     }
-    public function getBooksAndAuthors()
+    public function getBooksAndAuthors($currentPage, $itemsPerPage)
     {
-        return ($this->model->getBooksAndAuthors()) ? $this->model->getBooksAndAuthors() : false;
+        return ($this->model->getBooksAndAuthors($currentPage, $itemsPerPage)) ? $this->model->getBooksAndAuthors($currentPage, $itemsPerPage) : false;
     }
-    public function showBooksAndAuthors($id)
+    public function showBooksAndAuthors($id, $currentPage, $itemsPerPage)
     {
-        return ($this->model->showBooksAndAuthors($id) != false ? $this->model->showBooksAndAuthors($id) : header("local:index:php"));
+        return ($this->model->showBooksAndAuthors($id, $currentPage, $itemsPerPage) != false ? $this->model->showBooksAndAuthors($id, $currentPage, $itemsPerPage) : header("local:index:php"));
     }
     public function searchBookAndAuthors($search)
     {
         return ($this->model->searchBookAndAuthors($search)) ? $this->model->searchBookAndAuthors($search) : false;
+    }
+    public function getTotalBooks()
+    {
+        return ($this->model->getTotalBooks() ? $this->model->getTotalBooks() : false);
     }
 }

@@ -2,10 +2,10 @@
 
 use Controller\BookController;
 
-require_once("c://xampp/htdocs/booknook/src/view/components/header.php");
+require_once("c://xampp/htdocs/booknook/src/view/head/header.php");
 require_once("c://xampp/htdocs/booknook/src/controller/BookController.php");
 $data = new BookController();
-$book = $data->showBooksAndAuthors($_GET["id"]);
+$book = $data->showBooksAndAuthors($_GET["id"], $currentPage, $itemsPerPage);
 ?>
 <section>
     <?php
@@ -13,5 +13,5 @@ $book = $data->showBooksAndAuthors($_GET["id"]);
     ?>
 </section>
 <?php
-require_once("c://xampp/htdocs/booknook/src/view/components/footer.php");
+require_once("c://xampp/htdocs/booknook/src/view/head/footer.php");
 ?>
