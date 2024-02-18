@@ -1,6 +1,3 @@
-<?php require_once("src/view/components/header.php") ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,9 +9,11 @@
     <title>Document</title>
 </head>
 
-<body>
-    <h1></h1>
 
+<body>
+    <?php require_once("src/view/components/header.php") ?>
+
+    <?php require_once("src/view/components/footer.php") ?>
 </body>
-<?php require_once("src/view/components/footer.php") ?>
+
 </html>
