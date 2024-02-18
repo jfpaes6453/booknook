@@ -1,6 +1,5 @@
-# BookNook 
 
-# 📚 Library
+# 📚 BookNook  📚
 
 This project is a web application for our neighborhood library. The application allows the library administrator to add books, update them, and delete them.
 
@@ -51,7 +50,7 @@ The library in our neighborhood wants to modernize and needs to have all its boo
    # Open the MAMP application
    # Click the "Start Servers" button.
    ```
-   # 📁 Folder Structure
+## 📁 Folder Structure
 
 - `src/`: This directory contains all the source code for the application.
     - `controllers/`: This directory contains all the controller classes.
@@ -61,7 +60,7 @@ The library in our neighborhood wants to modernize and needs to have all its boo
 - `public/`: This directory contains all the public files like CSS, JavaScript, and images.
 - `vendor/`: This directory contains all the third-party dependencies.
 
-# 📸 Screenshots
+## 📸 Screenshots
 
 Here are some screenshots of the application:
 
