@@ -30,4 +30,8 @@ class BookController
     {
         return ($this->model->getTotalBooks() ? $this->model->getTotalBooks() : false);
     }
+    public function deleteBook($id)
+    {
+        return ($this->model->deleteBook($id))  ? header("Location:index.php") : header("Location:index.php?id=" . $id);
+    }
 }

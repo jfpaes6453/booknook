@@ -70,4 +70,11 @@ class BookModel
         $result = $statement->fetch(PDO::FETCH_ASSOC);
         return $result['total'];
     }
+
+    public function deleteBook($id)
+    {
+        $statement = $this->pdo->prepare("DELETE FROM booknook.books WHERE id = :id");
+        $statement->bindParam(":id", $id);
+        return ($statement->execute()) ? true : false;
+    }
 }

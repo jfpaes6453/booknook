@@ -47,13 +47,21 @@ $booksData = $data->getBooksAndAuthors($currentPage, $itemsPerPage);
                         <div class="w-full pt-[1rem] px-[0.5rem] flex gap-[0.8rem] items-center">
                             <a href="" class="basis-[43%] bg-[#FED78C] rounded text-center py-[0.3rem] text-[1rem] text-[#686868] font-bold hover:bg-[#ffc24c] hover:text-white transition-all delay-[0.2s] ease-in-out">Edit</a>
                             <a href="src/view/detailsBook.php?id=<?= $bookData["id"] ?>" class="basis-[43%] bg-[#F4C496] rounded text-center py-[0.3rem] text-[1rem] text-[#686868] font-bold hover:bg-[#f2aa65] hover:text-white transition-all ease-in-out">Read more...</a>
-                            <a href="" class="basis-[12%]">
+                            <a href="#" class="basis-[12%]" id="openModalBtn<?= $bookData["id"] ?>">
                                 <img src="http://localhost/booknook/src/resources/img/icon-delete.svg" alt="icon delete">
                             </a>
+                            <div id="myModal<?= $bookData["id"] ?>" class="modal">
+                                <div class="modal-content">
+                                    <span class="close" id="closeModal<?= $bookData["id"] ?>">&times;</span>
+                                    <h2>Título del Modal</h2>
+                                    <p>Contenido del modal...</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             <?php endforeach; ?>
+    </div>
     </div>
     <?php if ($totalPages > 1) : ?>
         <div class="flex justify-center mt-[5rem] mb-[3rem]">
@@ -99,9 +107,7 @@ $booksData = $data->getBooksAndAuthors($currentPage, $itemsPerPage);
 </section>
 <?php else : ?>
     <h3 class="text-center txt-books text-warning p-4">No books yet</h3>
-
 <?php endif; ?>
-
 <script>
     function validateForm() {
         var searchInput = document.getElementById('search');
@@ -111,6 +117,29 @@ $booksData = $data->getBooksAndAuthors($currentPage, $itemsPerPage);
         }
         return true;
     }
+</script>
+<script>
+    // Código JavaScript para abrir y cerrar modal para cada libro
+    <?php foreach ($booksData as $bookData) : ?>
+        var openModalBtn<?= $bookData["id"] ?> = document.getElementById("openModalBtn<?= $bookData["id"] ?>");
+        var modal<?= $bookData["id"] ?> = document.getElementById("myModal<?= $bookData["id"] ?>");
+        var closeModal<?= $bookData["id"] ?> = document.getElementById("closeModal<?= $bookData["id"] ?>");
+
+        openModalBtn<?= $bookData["id"] ?>.addEventListener("click", function(event) {
+            event.preventDefault();
+            modal<?= $bookData["id"] ?>.style.display = "block";
+        });
+
+        closeModal<?= $bookData["id"] ?>.addEventListener("click", function() {
+            modal<?= $bookData["id"] ?>.style.display = "none";
+        });
+
+        window.addEventListener("click", function(event) {
+            if (event.target == modal<?= $bookData["id"] ?>) {
+                modal<?= $bookData["id"] ?>.style.display = "none";
+            }
+        });
+    <?php endforeach; ?>
 </script>
 
 </body>
