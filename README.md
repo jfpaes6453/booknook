@@ -28,11 +28,11 @@ The library in our neighborhood wants to modernize and needs to have all its boo
 
 1. Clone the repository:
     ```bash
-    git clone <repository-url>
+    git clone https://github.com/jfpaes6453/booknook.git
     ```
 2. Navigate to the project directory:
     ```bash
-    cd <project-directory>
+    cd booknook
     ```
 3. Install the dependencies:
     ```bash
