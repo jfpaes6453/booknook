@@ -32,6 +32,19 @@ $booksData = $data->getBooksAndAuthors($currentPage, $itemsPerPage);
         <h2 class="font-['Nunito Sans'] text-[1.5rem] font-bold">ALL BOOKS</h2>
         <span class="pt-[0.5rem] border-b-4 border-[#FF621E] w-[05rem] block"></span>
     </div>
+    <?php if (isset($_GET["msg"])) : ?>
+        <div id="successModal" class="modal block">
+            <div class="modal-content w-[25%] h-[32rem] bg-[#F2D783] p-[3rem] ">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <div class="flex flex-col items-center h-full justify-center">
+                    <picture>
+                        <img src="http://localhost/booknook/src/resources/img/img-success.png" alt="imagen de libro abierto" class="h-[8rem]">
+                    </picture>
+                    <h2 class="font-['Nunito Sans'] text-[1.5rem] leading-[1.8rem] font-bold mt-[2rem] w-[100%] text-center">The book successfully deleted</h2>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
     <?php require_once("src/view/searchBook.php"); ?>
     <div class="flex gap-[3rem] flex-wrap justify-center px-24" id="result-bookss">
         <?php if ($booksData !== false && $bookSearch == null) : ?>
@@ -50,15 +63,10 @@ $booksData = $data->getBooksAndAuthors($currentPage, $itemsPerPage);
                             <a href="#" class="basis-[12%]" id="openModalBtn<?= $bookData["id"] ?>">
                                 <img src="http://localhost/booknook/src/resources/img/icon-delete.svg" alt="icon delete">
                             </a>
-                            <div id="myModal<?= $bookData["id"] ?>" class="modal">
-                                <div class="modal-content">
-                                    <span class="close" id="closeModal<?= $bookData["id"] ?>">&times;</span>
-                                    <h2>Título del Modal</h2>
-                                    <p>Contenido del modal...</p>
-                                </div>
-                            </div>
                         </div>
+                        <?php require("src/view/deleteBook.php"); ?>
                     </div>
+
                 </div>
             <?php endforeach; ?>
     </div>
@@ -119,7 +127,6 @@ $booksData = $data->getBooksAndAuthors($currentPage, $itemsPerPage);
     }
 </script>
 <script>
-    // Código JavaScript para abrir y cerrar modal para cada libro
     <?php foreach ($booksData as $bookData) : ?>
         var openModalBtn<?= $bookData["id"] ?> = document.getElementById("openModalBtn<?= $bookData["id"] ?>");
         var modal<?= $bookData["id"] ?> = document.getElementById("myModal<?= $bookData["id"] ?>");
@@ -140,8 +147,13 @@ $booksData = $data->getBooksAndAuthors($currentPage, $itemsPerPage);
             }
         });
     <?php endforeach; ?>
-</script>
 
+    function closeModal() {
+        var modal = document.getElementById("successModal");
+        modal.style.display = "none";
+        window.location.href = "http://localhost/booknook/";
+    }
+</script>
 </body>
 
 </html>

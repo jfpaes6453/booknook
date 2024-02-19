@@ -32,6 +32,6 @@ class BookController
     }
     public function deleteBook($id)
     {
-        return ($this->model->deleteBook($id))  ? header("Location:index.php") : header("Location:index.php?id=" . $id);
+        return ($this->model->deleteBook($id)) != false ? $this->model->deleteBook($id) : header("local:index:php");
     }
 }
