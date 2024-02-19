@@ -10,11 +10,13 @@ $id = $_GET["id"];
 $bookEdit = $data->showBooksAndAuthors($id);
 ?>
 
+
 <section class="flex flex-col items-center justify-center min-h-screen px-4 py-12">
     <div class="w-[55%] shadow-lg shadow-gray-500 py-10 px-12 border-[1.5rem] border-[#FEBD01]">
         <h2 class="text-3xl font-extrabold mb-2">Modify information</h2>
         <p class="text-yellow-500 mb-8 text-[1rem]">The fields marked with * are required.</p>
         <form action="http://localhost/booknook/src/view/updateBook.php" method="POST" enctype="multipart/form-data" class="w-full">
+            <input type="hidden" name="id" value="<?= $bookEdit['id'] ?>">
             <div class="mb-4">
                 <label class="block text-gray-700 text-[1.2rem] font-bold mb-2" for="title">
                     Title: <span class="text-red-500">*</span>
@@ -23,9 +25,15 @@ $bookEdit = $data->showBooksAndAuthors($id);
             </div>
             <div class="mb-6">
                 <label class="block text-gray-700 text-[1.2rem] font-bold mb-2" for="author">
-                    Author: <span class="text-red-500">*</span>
+                    Author Name: <span class="text-red-500">*</span>
                 </label>
-                <input class="h-[3rem] text-[1rem] shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="author_name" type="text" name="author" value="<?= "{$bookEdit['name']} {$bookEdit['last_name']}" ?>" required>
+                <input class="h-[3rem] text-[1rem] shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="author_name" type="text" name="author_name" value="<?= "{$bookEdit['name']}" ?>" required>
+            </div>
+            <div class="mb-6">
+                <label class="block text-gray-700 text-[1.2rem] font-bold mb-2" for="author">
+                    Author Lastname: <span class="text-red-500">*</span>
+                </label>
+                <input class="h-[3rem] text-[1rem] shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="last_name" type="text" name="last_name" value="<?= "{$bookEdit['last_name']}" ?>" required>
             </div>
 
             <div class="mb-6">
@@ -60,9 +68,9 @@ $bookEdit = $data->showBooksAndAuthors($id);
                     </div>
                 </div>
                 <div class="flex gap-[1rem] mt-[3rem]">
-                    <a class="cursor-pointer hover:text-white bg-[#FED78C] hover:bg-yellow-400 text-[#716C6C] font-bold text-[1rem] py-2 px-8  focus:outline-none focus:shadow-outline" type="submit">
+                    <button class="cursor-pointer hover:text-white bg-[#FED78C] hover:bg-yellow-400 text-[#716C6C] font-bold text-[1rem] py-2 px-8  focus:outline-none focus:shadow-outline" type="submit">
                         Send
-                    </a>
+                    </button>
                     <a href="http://localhost/booknook/index.php" class="bg-[#F4C496] hover:bg-orange-400 text-[#716C6C] font-bold text-[1rem] py-2 px-8  focus:outline-none focus:shadow-outline hover:text-white" type="reset">
                         Cancel
                     </a>

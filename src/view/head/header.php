@@ -55,7 +55,7 @@
 
             <?php if (isset($_SESSION['user_id'])) : ?>
 
-                <a href="http://localhost/booknook/index.php" class=" py-[0.3rem] px-[0.2rem] text-center text-zinc-800 text-[0.9rem] font-semibold hover:border-b-[0.2rem] hover:border-[#FF621E] transition ease-all delay-[0.2s]">ADD A NEW BOOK</a>
+                <a href="http://localhost/booknook/src/view/CreateBook.php" class=" py-[0.3rem] px-[0.2rem] text-center text-zinc-800 text-[0.9rem] font-semibold hover:border-b-[0.2rem] hover:border-[#FF621E] transition ease-all delay-[0.2s]">ADD A NEW BOOK</a>
                 <a href="http://localhost/booknook/src/controller/LogoutController.php" class="py-[0.3rem] px-[0.2rem] text-center text-zinc-800 text-[0.9rem] font-semibold font-[\'Nunito Sans\'] hover:border-b-[0.2rem] hover:border-[#FF621E] transition ease-all delay-[0.2s]">LOGOUT</a>
             <?php else : ?>
                 <button data-modal-target="loginModal" data-modal-toggle="loginModal" class="py-[0.2rem] px-[0.2rem] flex gap-[0.5rem] text-center text-zinc-800 text-[0.9rem] font-semibold font-[\'Nunito Sans\'] hover:border-b-[0.2rem] hover:border-[#FF621E] transition ease-all delay-[0.2s]">LOGIN

@@ -89,25 +89,61 @@ class BookModel
         $statement->bindParam(":id", $id);
         return ($statement->execute()) ? true : false;
     }
-    public function editBook($id, $newData)
+    public function editBook($id, $newData, $image)
     {
+        echo $id;
+        var_dump($newData);
         try {
-            $query = "UPDATE booknook.books b 
-        JOIN booknook.authors a ON b.author_id = a.id 
-        SET b.title = :title, 
-            a.name = :author_name, 
-            b.description = :description, 
-            b.genre = :genre, 
-            b.isbn = :isbn 
-        WHERE b.id = :id";
-            $statement = $this->pdo->prepare($query);
-            $statement->bindParam(':title', $newData['title']);
-            $statement->bindParam(':name', $newData['name']);
-            $statement->bindParam(':description', $newData['description']);
-            $statement->bindParam(':genre', $newData['genre']);
-            $statement->bindParam(':isbn', $newData['isbn']);
-            $statement->bindParam(':id', $id);
-            return $statement->execute();
+            $this->pdo->beginTransaction();
+
+            $authorQuery = "UPDATE booknook.authors a SET a.name = :name, a.last_name = :last_name  WHERE a.id = $id";
+            $authorStatement = $this->pdo->prepare($authorQuery);
+            $authorStatement->bindParam(':name', $newData['author_name']);
+            $authorStatement->bindParam(':last_name', $newData['author_last_name']);
+            $authorStatement->execute();
+
+            // actualizar libros
+
+            $bookQuery = "UPDATE booknook.books b SET b.title = :title, b.description = :description, b.genre = :genre, b.isbn = :isbn b.image = :image WHERE author_id = $id";
+            $bookStatement = $this->pdo->prepare($bookQuery);
+            $bookStatement->bindParam(':title', $newData['title']);
+            $bookStatement->bindParam(':description', $newData['description']);
+            $bookStatement->bindParam(':genre', $newData['genre']);
+            $bookStatement->bindParam(':isbn', $newData['isbn']);
+            $bookStatement->bindParam(":image", $image);
+            $bookStatement->execute();
+
+            $this->pdo->commit();
+            return true;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return false;
+        }
+    }
+    public function insertBook($newData, $image)
+    {
+
+        try {
+            $this->pdo->beginTransaction();
+            $authorQuery = "INSERT INTO booknook.authors (name, last_name) VALUES (:name, :last_name)";
+            $authorStatement = $this->pdo->prepare($authorQuery);
+            $authorStatement->bindParam(':name', $newData['author_name']);
+            $authorStatement->bindParam(':last_name', $newData['author_last_name']);
+            $authorStatement->execute();
+            $authorId = $this->pdo->lastInsertId();
+
+            // actualizar libros
+            $bookQuery = "INSERT INTO booknook.books (title, description, author_id, genre, isbn, image) VALUES (:title, :description, :author_id, :genre, :isbn, :image)";
+            $bookStatement = $this->pdo->prepare($bookQuery);
+            $bookStatement->bindParam(':title', $newData['title']);
+            $bookStatement->bindParam(':author_id', $authorId);
+            $bookStatement->bindParam(':description', $newData['description']);
+            $bookStatement->bindParam(':genre', $newData['genre']);
+            $bookStatement->bindParam(':isbn', $newData['isbn']);
+            $bookStatement->bindParam(':image', $image);
+            $bookStatement->execute();
+            $this->pdo->commit();
+            return true;
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
             return false;

@@ -34,8 +34,13 @@ class BookController
     {
         return ($this->model->deleteBook($id)) != false ? $this->model->deleteBook($id) : header("local:index:php");
     }
-    public function editBook($id, $newData)
+    public function editBook($id, $newData, $image)
     {
-        return ($this->model->editBook($id, $newData) != false) ? header("Location:editBook.php?id=" . $id) : header("Location:index.php");
+        return ($this->model->editBook($id, $newData, $image) != false) ? header("Location: http://localhost/booknook/") : header("Location:editBook.php");
+    }
+
+    public function insertBook($newData, $image)
+    {
+        return ($this->model->insertBook($newData, $image) != false) ? header("Location: http://localhost/booknook/") : header("Location:CreateBook.php");
     }
 }
