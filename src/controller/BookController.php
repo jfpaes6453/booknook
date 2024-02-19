@@ -36,6 +36,6 @@ class BookController
     }
     public function editBook($id, $newData)
     {
-        return ($this->model->editBook($id, $newData)) ? $this->model->editBook($id, $newData) : false;
+        return ($this->model->editBook($id, $newData) != false) ? header("Location:editBook.php?id=" . $id) : header("Location:index.php");
     }
 }

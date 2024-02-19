@@ -1,14 +1,14 @@
 <?php
-
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 require_once __DIR__ . '/../../vendor/autoload.php';
-
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-session_start();
+require_once("c://xampp/htdocs/booknook/src/model/UserModel.php");
 
 use Model\UserModel;
 
 $userModel = new UserModel();
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST['email']);
@@ -17,18 +17,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user = $userModel->authenticateUser($email, $password);
 
     if ($user !== false) {
+        // El usuario se autenticó correctamente, establecer variables de sesión
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['email'] = $user['email'];
-        header("Location: http://localhost/booknook/src/view/Dashboard.php");
+
+        // Redirigir al usuario a la página principal
+        header("Location: /booknook/index.php");
         exit();
     } else {
+        // Credenciales inválidas, mostrar mensaje de error y volver a la página de inicio de sesión
         $_SESSION['error'] = 'Invalid email or password.';
-        include __DIR__ . '/../view/Login.php'; 
+        header("Location: /booknook/index.php");
         exit();
     }
 } else {
-    header("Location: ../../index.php");
+    // Redirigir a la página de inicio si se intenta acceder directamente a este script sin enviar datos de formulario
+    header("Location: /booknook/index.php");
     exit();
 }
-
-?>

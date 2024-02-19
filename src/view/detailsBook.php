@@ -9,7 +9,7 @@ $id = $_GET["id"];
 $book = $data->showBooksAndAuthors($id);
 ?>
 <section class="relative">
-    <section class=" flex px-[12rem] pt-[8rem] h-[58rem]" style="background-image: url('http://localhost/booknook/src/resources/img/bg-left.png'), url('http://localhost/booknook/src/resources/img/bg-rigth.png'); background-size: contain; background-repeat:no-repeat, no-repeat; background-position: left, right; ">
+    <section class=" flex px-[12rem] pt-[5rem] h-[56rem]" style="background-image: url('http://localhost/booknook/src/resources/img/bg-left.png'), url('http://localhost/booknook/src/resources/img/bg-rigth.png'); background-size: contain; background-repeat:no-repeat, no-repeat; background-position: left, right; ">
         <div class="basis-[45%]">
             <img src="data:image/jpg; base64,<?= base64_encode($book['image_details']) ?>" class="w-full]" alt="<?= $book["title"] ?>">
         </div>

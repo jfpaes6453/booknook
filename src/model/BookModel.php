@@ -90,20 +90,27 @@ class BookModel
         return ($statement->execute()) ? true : false;
     }
     public function editBook($id, $newData)
-{
-    try {
-        $query = "UPDATE booknook.books b JOIN booknook.authors a ON a.name = :author_name SET b.title = :title, b.author_id = a.id, b.description = :description, b.genre = :genre, b.isbn = :isbn WHERE b.id = :id";
-        $statement = $this->pdo->prepare($query);
-        $statement->bindParam(':title', $newData['title']);
-        $statement->bindParam(':name', $newData['name']);
-        $statement->bindParam(':description', $newData['description']);
-        $statement->bindParam(':genre', $newData['genre']);
-        $statement->bindParam(':isbn', $newData['isbn']);
-        $statement->bindParam(':id', $id);
-        return ($statement->execute()) ? true : false;
-    } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
+    {
+        try {
+            $query = "UPDATE booknook.books b 
+        JOIN booknook.authors a ON b.author_id = a.id 
+        SET b.title = :title, 
+            a.name = :author_name, 
+            b.description = :description, 
+            b.genre = :genre, 
+            b.isbn = :isbn 
+        WHERE b.id = :id";
+            $statement = $this->pdo->prepare($query);
+            $statement->bindParam(':title', $newData['title']);
+            $statement->bindParam(':name', $newData['name']);
+            $statement->bindParam(':description', $newData['description']);
+            $statement->bindParam(':genre', $newData['genre']);
+            $statement->bindParam(':isbn', $newData['isbn']);
+            $statement->bindParam(':id', $id);
+            return $statement->execute();
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return false;
+        }
     }
-}
-
 }

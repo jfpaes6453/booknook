@@ -5,15 +5,19 @@ namespace Model;
 use Config\Database;
 use PDO;
 
-class UserModel {
+var_dump($thid->db);
+class UserModel
+{
     private $db;
 
-    public function __construct() {
+    public function __construct()
+    {
         $database = new Database();
         $this->db = $database->connection();
     }
 
-    public function authenticateUser($email, $password) {
+    public function authenticateUser($email, $password)
+    {
         $stmt = $this->db->prepare("SELECT * FROM users WHERE email = :email LIMIT 1");
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
         $stmt->execute();
@@ -28,5 +32,3 @@ class UserModel {
         return false;
     }
 }
-
-?>
