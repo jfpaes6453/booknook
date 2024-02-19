@@ -22,7 +22,7 @@ class Database
         $dotenv->load();
 
         $this->host = $_ENV['DB_HOST'];
-        $this->dbname = $_ENV['DB_DATABASE'];
+        $this->dbname = $_ENV['DB_NAME'];
         $this->user = $_ENV['DB_USER'];
         $this->password = $_ENV['DB_PASSWORD'];
     }

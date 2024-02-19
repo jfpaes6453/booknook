@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($user !== false) {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['email'] = $user['email'];
-        header("Location: ../view/Dashboard.php");
+        header("Location: http://localhost/booknook/src/view/Dashboard.php");
         exit();
     } else {
         $_SESSION['error'] = 'Invalid email or password.';
