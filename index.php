@@ -66,10 +66,6 @@ $booksData = $data->getBooksAndAuthors($currentPage, $itemsPerPage);
                         </div>
                         <?php require("src/view/deleteBook.php"); ?>
                     </div>
-
-<<<<<<< HEAD
-    <?php require_once("src/view/components/header.php") ?>
-=======
                 </div>
             <?php endforeach; ?>
     </div>
@@ -119,6 +115,9 @@ $booksData = $data->getBooksAndAuthors($currentPage, $itemsPerPage);
 <?php else : ?>
     <h3 class="text-center txt-books text-warning p-4">No books yet</h3>
 <?php endif; ?>
+<?php
+require_once("src/view/head/footer.php");
+?>
 <script>
     function validateForm() {
         var searchInput = document.getElementById('search');
@@ -157,7 +156,6 @@ $booksData = $data->getBooksAndAuthors($currentPage, $itemsPerPage);
         window.location.href = "http://localhost/booknook/";
     }
 </script>
->>>>>>> 5782fe5d91863bc8de0b2480e5f4ff521a9eaebf
 </body>
 
 </html>
