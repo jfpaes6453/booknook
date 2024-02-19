@@ -58,7 +58,7 @@ $booksData = $data->getBooksAndAuthors($currentPage, $itemsPerPage);
                         <h5 class="text-[1.1rem] font-bold text-[#FF621E]"><?= $bookData["title"] ?></h5>
                         <p class="text-[1rem] font-semibold">ISBN: <?= $bookData["isbn"] ?></p>
                         <div class="w-full pt-[1rem] px-[0.5rem] flex gap-[0.8rem] items-center">
-                            <a href="" class="basis-[43%] bg-[#FED78C] rounded text-center py-[0.3rem] text-[1rem] text-[#686868] font-bold hover:bg-[#ffc24c] hover:text-white transition-all delay-[0.2s] ease-in-out">Edit</a>
+                            <a href="src/view/editBook.php?id=<?= $bookData['id'] ?>" class="basis-[43%] bg-[#FED78C] rounded text-center py-[0.3rem] text-[1rem] text-[#686868] font-bold hover:bg-[#ffc24c] hover:text-white transition-all delay-[0.2s] ease-in-out">Edit</a>
                             <a href="src/view/detailsBook.php?id=<?= $bookData["id"] ?>" class="basis-[43%] bg-[#F4C496] rounded text-center py-[0.3rem] text-[1rem] text-[#686868] font-bold hover:bg-[#f2aa65] hover:text-white transition-all ease-in-out">Read more...</a>
                             <a class="basis-[12%] cursor-pointer" id="openModalBtn<?= $bookData["id"] ?>">
                                 <img src="http://localhost/booknook/src/resources/img/icon-delete.svg" alt="icon delete">
@@ -156,6 +156,7 @@ require_once("src/view/head/footer.php");
         window.location.href = "http://localhost/booknook/";
     }
 </script>
+<script src="./node_modules/flowbite/dist/flowbite.min.js"></script>
 </body>
 
 </html>
