@@ -154,6 +154,7 @@ $booksData = $data->getBooksAndAuthors($currentPage, $itemsPerPage);
         window.location.href = "http://localhost/booknook/";
     }
 </script>
+<script src="./node_modules/flowbite/dist/flowbite.min.js"></script>
 </body>
 
 </html>
