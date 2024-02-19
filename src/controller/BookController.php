@@ -34,4 +34,8 @@ class BookController
     {
         return ($this->model->deleteBook($id)) != false ? $this->model->deleteBook($id) : header("local:index:php");
     }
+    public function editBook($id, $newData)
+    {
+        return ($this->model->editBook($id, $newData)) ? $this->model->editBook($id, $newData) : false;
+    }
 }
