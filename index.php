@@ -13,7 +13,7 @@
 <body>
     <?php require_once("src/view/components/header.php") ?>
 
-    <?php require_once("src/view/components/footer.php") ?>
+    <?php require_once("src/view/components/header.php") ?>
 </body>
 
 </html>
