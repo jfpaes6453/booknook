@@ -2,6 +2,8 @@
 
 namespace Config;
 
+require_once __DIR__ . '/../vendor/autoload.php';
+
 use PDO;
 use PDOException;
 use Dotenv\Dotenv;
@@ -19,7 +21,7 @@ class Database
         $dotenv->load();
 
         $this->host = $_ENV['DB_HOST'];
-        $this->dbname = $_ENV['DB_NAME'];
+        $this->dbname = $_ENV['DB_DATABASE'];
         $this->user = $_ENV['DB_USER'];
         $this->password = $_ENV['DB_PASSWORD'];
     }
