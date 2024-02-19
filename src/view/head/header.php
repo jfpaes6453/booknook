@@ -70,10 +70,10 @@
             <div class="w-full md:w-1/2"> <!-- Right Side Content -->
                 <!-- Modal header with smaller image on top -->
                 <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                    <div class="flex items-center"> <!-- Title and smaller image -->
-                        <img src="./src/resources/img/logo_1.png" alt="Small Image" class="w-8 h-8 mr-2"> 
-                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                            Hi, Welcome again!
+                    <div class=" items-center"> <!-- Title and smaller image -->
+                        <img src="./src/resources/img/logo_1.png" alt="Small Image" class="h-auto max-w-m block"> 
+                        <h3 class="text-5xl font-bold text-gray-600 dark:text-white block">
+                            Hi, <br> Welcome again!
                         </h3>
                     </div>
                     <button type="button" class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="loginModal">
@@ -94,7 +94,7 @@
                             <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password *</label>
                             <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
                         </div>
-                        <button type="submit" class="w-full text-gray-700 font-bold bg-yellow-200 hover:bg-yellow-100 focus:ring-4 focus:outline-none focus:ring-yellow-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-yellow-200 dark:hover:bg-yellow-200 dark:focus:ring-yellow-200">Login</button>
+                        <button type="submit" class="w-full text-gray-700 font-extrabold bg-yellow-400 hover:bg-yellow-100 focus:ring-4 focus:outline-none focus:ring-yellow-200 rounded-lg text-lg px-5 py-2.5 text-center dark:bg-yellow-200 dark:hover:bg-yellow-200 dark:focus:ring-yellow-200">Login</button>
                     </form>
                 </div>
             </div>
