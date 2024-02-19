@@ -31,26 +31,38 @@ class BookModel
         return ($statement->execute()) ? $statement->fetchAll() : false;
     }
 
-    public function showBooksAndAuthors($id, $currentPage, $itemsPerPage)
+    public function showBooksAndAuthors($id, $currentPage = null, $itemsPerPage = null)
     {
         try {
-            $bookAndAuthors = $this->getBooksAndAuthors($currentPage, $itemsPerPage);
-            $query = "SELECT *
-                FROM booknook.books
-                WHERE id = :id
-                LIMIT 1";
+            $query = "
+            SELECT books.*, authors.*
+            FROM booknook.books
+            INNER JOIN booknook.authors ON books.author_id = authors.id
+            WHERE books.id = :id
+            LIMIT 1 ";
+
+            if ($currentPage !== null && $itemsPerPage !== null) {
+                $query .= " OFFSET :offset LIMIT :limit";
+            }
+
             $statement = $this->pdo->prepare($query);
             $statement->bindParam(':id', $id, PDO::PARAM_INT);
+
+            if ($currentPage !== null && $itemsPerPage !== null) {
+                $offset = ($currentPage - 1) * $itemsPerPage;
+                $statement->bindParam(':offset', $offset, PDO::PARAM_INT);
+                $statement->bindParam(':limit', $itemsPerPage, PDO::PARAM_INT);
+            }
+
             $statement->execute();
             $book = $statement->fetch(PDO::FETCH_ASSOC);
-            return [
-                'booksAndAuthors' => $bookAndAuthors,
-                'book' => $book
-            ];
+
+            return $book;
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
     }
+
 
     public function searchBookAndAuthors($search)
     {

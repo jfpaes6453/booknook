@@ -53,3 +53,7 @@ body {
     text-decoration: none;
     cursor: pointer;
 }
+
+.section-details {
+    background-color: #000000;
+}

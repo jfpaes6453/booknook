@@ -60,7 +60,7 @@ $booksData = $data->getBooksAndAuthors($currentPage, $itemsPerPage);
                         <div class="w-full pt-[1rem] px-[0.5rem] flex gap-[0.8rem] items-center">
                             <a href="" class="basis-[43%] bg-[#FED78C] rounded text-center py-[0.3rem] text-[1rem] text-[#686868] font-bold hover:bg-[#ffc24c] hover:text-white transition-all delay-[0.2s] ease-in-out">Edit</a>
                             <a href="src/view/detailsBook.php?id=<?= $bookData["id"] ?>" class="basis-[43%] bg-[#F4C496] rounded text-center py-[0.3rem] text-[1rem] text-[#686868] font-bold hover:bg-[#f2aa65] hover:text-white transition-all ease-in-out">Read more...</a>
-                            <a href="#" class="basis-[12%]" id="openModalBtn<?= $bookData["id"] ?>">
+                            <a class="basis-[12%] cursor-pointer" id="openModalBtn<?= $bookData["id"] ?>">
                                 <img src="http://localhost/booknook/src/resources/img/icon-delete.svg" alt="icon delete">
                             </a>
                         </div>

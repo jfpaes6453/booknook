@@ -18,7 +18,7 @@ class BookController
     {
         return ($this->model->getBooksAndAuthors($currentPage, $itemsPerPage)) ? $this->model->getBooksAndAuthors($currentPage, $itemsPerPage) : false;
     }
-    public function showBooksAndAuthors($id, $currentPage, $itemsPerPage)
+    public function showBooksAndAuthors($id, $currentPage = null, $itemsPerPage = null)
     {
         return ($this->model->showBooksAndAuthors($id, $currentPage, $itemsPerPage) != false ? $this->model->showBooksAndAuthors($id, $currentPage, $itemsPerPage) : header("local:index:php"));
     }

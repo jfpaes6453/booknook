@@ -54,3 +54,4 @@ if (isset($_GET["search"])) {
     </div>
 <?php endif; ?>
     </section>
+    <?php require_once("c://xampp/htdocs/booknook/src/view/head/header.php"); ?>
