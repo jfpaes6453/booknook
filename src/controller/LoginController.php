@@ -6,15 +6,9 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 session_start();
 
-require_once __DIR__ . '/../../config/Database.php'; 
-require_once __DIR__ . '/../model/UserModel.php'; 
+use Model\UserModel;
 
-use Config\Database;
-
-$db = new Database();
-$conn = $db->connection();
-
-$userModel = new UserModel($conn);
+$userModel = new UserModel();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST['email']);
@@ -36,4 +30,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header("Location: ../../index.php");
     exit();
 }
+
 ?>
